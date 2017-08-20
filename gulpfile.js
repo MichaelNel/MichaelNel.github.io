@@ -9,6 +9,9 @@
 var fs = require('fs');
 var gulp = require('gulp');
 var deploy = require('gulp-gh-pages');
+var $ = require('gulp-load-plugins')({
+    pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
+});
 
 /**
  *  This will load all js or coffee files in the gulp directory
