@@ -38,6 +38,6 @@ gulp.task('default', ['clean'], function () {
  */
 gulp.task('deploy', function () {
     return gulp.src("./dist/**/*")
-        .pipe($.replace('/assets/', '/nelson/assets/'))
+        .pipe($.replace('/assets/images/', '/nelson/assets/images/'))
         .pipe(deploy())
 });
