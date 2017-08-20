@@ -9,9 +9,7 @@
 var fs = require('fs');
 var gulp = require('gulp');
 var deploy = require('gulp-gh-pages');
-// var $ = require('gulp-load-plugins')({
-//     pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
-// });
+var replace = require('gulp-replace');
 
 /**
  *  This will load all js or coffee files in the gulp directory
@@ -38,5 +36,6 @@ gulp.task('default', ['clean'], function () {
  */
 gulp.task('deploy', function () {
     return gulp.src("./dist/**/*")
+        .pipe(replace('/assets/images/', '/nelson/assets/images/'))
         .pipe(deploy())
 });
