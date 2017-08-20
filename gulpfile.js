@@ -8,16 +8,16 @@
 
 var fs = require('fs');
 var gulp = require('gulp');
-var deploy      = require('gulp-gh-pages');
+var deploy = require('gulp-gh-pages');
 
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks
  */
-fs.readdirSync('./gulp').filter(function(file) {
-  return (/\.(js|coffee)$/i).test(file);
-}).map(function(file) {
-  require('./gulp/' + file);
+fs.readdirSync('./gulp').filter(function (file) {
+    return (/\.(js|coffee)$/i).test(file);
+}).map(function (file) {
+    require('./gulp/' + file);
 });
 
 
@@ -26,7 +26,7 @@ fs.readdirSync('./gulp').filter(function(file) {
  *  main optimization build task
  */
 gulp.task('default', ['clean'], function () {
-  gulp.start('build');
+    gulp.start('build');
 });
 
 
@@ -35,5 +35,6 @@ gulp.task('default', ['clean'], function () {
  */
 gulp.task('deploy', function () {
     return gulp.src("./dist/**/*")
+        .pipe($.replace('/assets/', '/nelson/assets/'))
         .pipe(deploy())
 });
